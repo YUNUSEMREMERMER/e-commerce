@@ -6,8 +6,17 @@ import { ChakraProvider } from '@chakra-ui/react'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
-const queryClient = new QueryClient()
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnMount: false,
+      refetchOnWindowFocus:false,
+    }
+  }
+});
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,6 +24,8 @@ ReactDOM.render(
       <ChakraProvider>
         <App />
       </ChakraProvider>
+
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')

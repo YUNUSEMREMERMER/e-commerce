@@ -3,13 +3,15 @@ import {Link} from "react-router-dom";
 import styles from "./styles.module.css";
 import { Button } from '@chakra-ui/react';
 
+// ??styles. diye neden yazıyoruz neden App.css dosyasında kullandığımız gibi kullanamıyoruz
+
 function index() {
   return (
     <nav className={styles.nav}>
         <div className={styles.left}>
-            <div className='logo'>
+            <div className={styles.logo}>
                 
-                <Link to="/">ecommerce</Link>
+                <Link to="/">eCommerce</Link>
                 
             </div>
             <ul className={styles.menu}>

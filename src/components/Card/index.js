@@ -7,8 +7,8 @@ function Card({ product }) {
 
     return (
         <Box borderWidth="1px" borderRadius="lg" overflow="hidden" p="3">
-            <Link to="#">
-                <Image src={photos[0]} alt='product' />
+            <Link to={`/product/${_id}`}>
+                <Image src={photos[0]} alt='product' loading='lazy' />
 
                 <Box p="6">
                     <Box d="flex" alignItems="baseline">
