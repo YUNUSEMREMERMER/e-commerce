@@ -1,42 +1,59 @@
 import React from 'react'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import { Button } from '@chakra-ui/react';
+import { useAuth } from "../../contexts/AuthContext";
 
 // ??styles. diye neden yazıyoruz neden App.css dosyasında kullandığımız gibi kullanamıyoruz
 
-function index() {
-  return (
-    <nav className={styles.nav}>
-        <div className={styles.left}>
-            <div className={styles.logo}>
-                
-                <Link to="/">eCommerce</Link>
-                
+function Navbar() {
+
+    const { loggedIn } = useAuth();
+    console.log(loggedIn);
+
+    return (
+        <nav className={styles.nav}>
+            <div className={styles.left}>
+                <div className={styles.logo}>
+
+                    <Link to="/">eCommerce</Link>
+
+                </div>
+                <ul className={styles.menu}>
+                    <li>
+                        <Link to="/">Products</Link>
+                    </li>
+                </ul>
+
             </div>
-            <ul className={styles.menu}>
-                <li>
-                    <Link to="/">Products</Link>
-                </li>
-            </ul>
 
-        </div>
-        
-        <div className={styles.right}>
+            <div className={styles.right}>
 
-            <Link to="/signin">
-                <Button colorScheme='pink'>Login</Button>
-            </Link>
-            <Link to="/signup">
-                <Button colorScheme='blue'>Register</Button>
-            </Link>
+                {
+                    !loggedIn && <>
+                        <Link to="/signin">
+                            <Button colorScheme='pink'>Login</Button>
+                        </Link>
+                        <Link to="/signup">
+                            <Button colorScheme='blue'>Register</Button>
+                        </Link>
+                    </>
+                }
 
-            
-            
-        </div>
-        
-    </nav>
-  )
+                {
+                    loggedIn && <>
+                        <Link to="/profile">
+                            <Button >Profile</Button>
+                        </Link>
+                    </>
+                }
+
+
+
+            </div>
+
+        </nav>
+    )
 }
 
-export default index
+export default Navbar
