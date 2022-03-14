@@ -8,6 +8,8 @@ import reportWebVitals from './reportWebVitals';
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { AuthProvider } from './contexts/AuthContext';
+import { BasketProvider } from './contexts/BasketContext';
+
 
 
 const queryClient = new QueryClient({
@@ -24,7 +26,10 @@ ReactDOM.render(
     <QueryClientProvider client={queryClient}>
       <ChakraProvider>
         <AuthProvider>
+          <BasketProvider>
           <App />
+
+          </BasketProvider>
         </AuthProvider>  
       </ChakraProvider>
 
